@@ -1,11 +1,9 @@
 name: Deploy VitePress to GitHub Pages
 
-# 当 main 分支有 push 时触发
 on:
   push:
     branches: [main]
 
-# 权限设置
 permissions:
   contents: read
   pages: write
@@ -14,8 +12,13 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
+    # ✅ 新增 environment 声明
+    environment:
+      name: github-pages
+
     steps:
-      # 1️⃣ 拉取仓库代码
+      # 1️⃣ 拉取代码
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -43,6 +46,6 @@ jobs:
         with:
           path: docs/.vitepress/dist
 
-      # 7️⃣ 部署到 GitHub Pages
+      # 7️⃣ 部署
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
