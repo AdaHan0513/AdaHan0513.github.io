@@ -1,0 +1,6 @@
+# Node dependencies
+node_modules
+
+# VitePress 缓存和构建产物
+docs/.vitepress/cache
+docs/.vitepress/dist
